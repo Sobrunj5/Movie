@@ -14,7 +14,7 @@ class _SignInpageState extends State<SignInpage> {
         child: RaisedButton(
           child: Text("Sign In"),
         onPressed: (){
-          AuthServices.signIn("sobrun@gmail.com", "12345");
+          AuthServices.signIn("sobrun@gmail.com", "123456");
         }, ),
       ),
     );
