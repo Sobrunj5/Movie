@@ -24,12 +24,11 @@ class AuthServices {
 
   static Future<SignInSignUpResult> signIn(
       String email, String password) async {
-   try {
+    try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
 
-        
-     User user = await result.user.fromFireStore();
+      User user = await result.user.fromFireStore();
 
       return SignInSignUpResult(user: user);
     } catch (e) {
@@ -37,11 +36,10 @@ class AuthServices {
     }
   }
 
-  static Future<Void> signOut() async{
+  static Future<void> signOut() async {
     await _auth.signOut();
   }
-
-  static Stream<FirebaseUser> get userStream => _auth.onAuthStateChanged;
+   static Stream<FirebaseUser> get userStream => _auth.onAuthStateChanged;
 }
 
 class SignInSignUpResult {
