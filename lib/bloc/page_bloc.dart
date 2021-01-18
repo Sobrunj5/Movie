@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +14,7 @@ class PageBloc extends Bloc<PageEvent, PageState>{
 
   @override
   Stream<PageState> mapEventToState(PageEvent event,) async*{
-    if(Event is GoToSplashPage){
+    if(event is GoToSplashPage){
       yield OnSplashPage();
     }
     else if(event is GoToLoginPage){
