@@ -16,7 +16,7 @@ class _MainPageState extends State<MainPage> {
           children: <Widget>[
             BlocBuilder<UserBloc, UserState>(
                 builder: (_, userState) => (userState is UserLoaded)
-                    ? Text("userState.user.name")
+                    ? Text(userState.user.name)
                     : SizedBox()),
             RaisedButton(
                 child: Text("Sign Out"),
