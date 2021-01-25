@@ -15,6 +15,10 @@ class _SignInpageState extends State<SignInpage> {
 
   @override
   Widget build(BuildContext context) {
+    context
+        .bloc<ThemeBloc>()
+        .add(ChangeTheme(ThemeData().copyWith(primaryColor: accentColor2)));
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
@@ -25,7 +29,9 @@ class _SignInpageState extends State<SignInpage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: 40,),
+                  SizedBox(
+                    height: 40,
+                  ),
                   SizedBox(
                     height: 70,
                     child: Image.asset("assets/logo.png"),
@@ -53,11 +59,11 @@ class _SignInpageState extends State<SignInpage> {
                     controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                            labelText: "Password",
-                            hintText: "Password",
-                            ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      labelText: "Password",
+                      hintText: "Password",
+                    ),
                   ),
                   SizedBox(
                     height: 6,
@@ -89,7 +95,8 @@ class _SignInpageState extends State<SignInpage> {
                     children: <Widget>[
                       Text(
                         "Start Fresh Now?",
-                        style: greyTextFont.copyWith(fontWeight: FontWeight.w400),
+                        style:
+                            greyTextFont.copyWith(fontWeight: FontWeight.w400),
                       ),
                       Text(
                         "Sign Up",
