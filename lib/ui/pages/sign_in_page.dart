@@ -9,14 +9,25 @@ class _SignInpageState extends State<SignInpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text ('Sign In Page')),
-      body: Center(
-        child: RaisedButton(
-          child: Text("Sign In"),
-        onPressed: (){
-          AuthServices.signIn("sobrun@gmail.com", "123456");
-        }, ),
-      ),
+      backgroundColor: Colors.white,
+      body: Container(
+          padding: EdgeInsets.symmetric(horizontal: defaulMargin),
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 70,
+                child: Image.asset("assets/logo.png"),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 70, bottom: 40),
+                child: Text(
+                  "Welcom Bck,\nExplore!",
+                  style: blackTextFont.copyWith(fontSize: 20),
+                ),
+              ),
+              
+            ],
+          )),
     );
   }
 }
