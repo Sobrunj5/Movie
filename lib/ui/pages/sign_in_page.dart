@@ -24,7 +24,7 @@ class _SignInpageState extends State<SignInpage> {
       body: Container(
           padding: EdgeInsets.symmetric(horizontal: defaulMargin),
           child: ListView(
-            children: [
+            children: <Widget> [
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
