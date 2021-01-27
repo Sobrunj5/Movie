@@ -94,28 +94,38 @@ class _SignInpageState extends State<SignInpage> {
                       width: 50,
                       height: 50,
                       margin: EdgeInsets.only(top: 40, bottom: 30),
-                      child: FloatingActionButton(
-                        child: Icon(
-                          Icons.arrow_forward,
-                          color: isEmailValid && isPasswordValid
-                              ? Colors.white
-                              : Color(0xFFBEBEBE),
-                        ),
-                        backgroundColor: isEmailValid && isPasswordValid
-                            ? mainColor
-                            : Color(0xFFE4E4E4),
-                        onPressed: isEmailValid && isPasswordValid ? () async {
-                          setState(() {
-                            isSigningIn = true;
-                          }); signInSignUpResult result = await AuthServices.signIn(emailController.text, passwordController.text);
-                           if(result.user == null){ setState(() {
-                            isSigningIn = false;
-                          });}
-                           Flushbar(
-                             duration: Duration(seconds:4), flushbarPosition: FlushbarPosition.TOP, backgroundColor: Color(0xFFFF5C83),message:result.message,
-                           )..show(context);
-                        }
-                      : null),
+                      child: isSigningIn ? SpinKitFadingCircle( color: mainColor): FloatingActionButton( elevation: 0,
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: isEmailValid && isPasswordValid
+                                ? Colors.white
+                                : Color(0xFFBEBEBE),
+                          ),
+                          backgroundColor: isEmailValid && isPasswordValid
+                              ? mainColor
+                              : Color(0xFFE4E4E4),
+                          onPressed: isEmailValid && isPasswordValid
+                              ? () async {
+                                  setState(() {
+                                    isSigningIn = true;
+                                  });
+                                  SignInSignUpResult result =
+                                      await AuthServices.signIn(
+                                          emailController.text,
+                                          passwordController.text);
+                                  if (result.user == null) {
+                                    setState(() {
+                                      isSigningIn = false;
+                                    });
+                                  }
+                                  Flushbar(
+                                    duration: Duration(seconds: 4),
+                                    flushbarPosition: FlushbarPosition.TOP,
+                                    backgroundColor: Color(0xFFFF5C83),
+                                    message: result.message,
+                                  )..show(context);
+                                }
+                              : null),
                     ),
                   ),
                   Row(
