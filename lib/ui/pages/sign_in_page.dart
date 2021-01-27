@@ -104,8 +104,18 @@ class _SignInpageState extends State<SignInpage> {
                         backgroundColor: isEmailValid && isPasswordValid
                             ? mainColor
                             : Color(0xFFE4E4E4),
-                        onPressed: () {},
-                      ),
+                        onPressed: isEmailValid && isPasswordValid ? () async {
+                          setState(() {
+                            isSigningIn = true;
+                          }); signInSignUpResult result = await AuthServices.signIn(emailController.text, passwordController.text);
+                           if(result.user == null){ setState(() {
+                            isSigningIn = false;
+                          });}
+                           Flushbar(
+                             duration: Duration(seconds:4), flushbarPosition: FlushbarPosition.TOP, backgroundColor: Color(0xFFFF5C83),message:result.message,
+                           )..show(context);
+                        }
+                      : null),
                     ),
                   ),
                   Row(
