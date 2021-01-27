@@ -24,7 +24,7 @@ class _SignInpageState extends State<SignInpage> {
       body: Container(
           padding: EdgeInsets.symmetric(horizontal: defaulMargin),
           child: ListView(
-            children: <Widget> [
+            children: <Widget>[
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,6 +44,11 @@ class _SignInpageState extends State<SignInpage> {
                     ),
                   ),
                   TextField(
+                    onChanged: (text) {
+                      setState(() {
+                        isEmailValid = EmailValidator.validate(text);
+                      });
+                    },
                     controller: emailController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -56,6 +61,11 @@ class _SignInpageState extends State<SignInpage> {
                     height: 16,
                   ),
                   TextField(
+                    onChanged: (text) {
+                      setState(() {
+                        isPasswordValid = text.length >= 6;
+                      });
+                    },
                     controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
@@ -85,8 +95,15 @@ class _SignInpageState extends State<SignInpage> {
                       height: 50,
                       margin: EdgeInsets.only(top: 40, bottom: 30),
                       child: FloatingActionButton(
-                        child: Icon(Icons.arrow_forward),
-                        backgroundColor: mainColor,
+                        child: Icon(
+                          Icons.arrow_forward,
+                          color: isEmailValid && isPasswordValid
+                              ? Colors.white
+                              : Color(0xFFBEBEBE),
+                        ),
+                        backgroundColor: isEmailValid && isPasswordValid
+                            ? mainColor
+                            : Color(0xFFE4E4E4),
                         onPressed: () {},
                       ),
                     ),
