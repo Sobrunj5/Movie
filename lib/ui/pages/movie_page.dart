@@ -47,6 +47,7 @@ class MoviePage extends StatelessWidget {
                     width: 16,
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       SizedBox(
                         width: MediaQuery.of(context).size.width -
