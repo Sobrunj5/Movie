@@ -1,4 +1,5 @@
 import 'package:bwa_flutix/bloc/blocs.dart';
+import 'package:bwa_flutix/models/models.dart';
 import 'package:bwa_flutix/services/services.dart';
 import 'package:bwa_flutix/shared/shared.dart';
 import 'package:email_validator/email_validator.dart';
@@ -17,4 +18,7 @@ part 'wrapper.dart';
 part 'main_page.dart';
 part 'splash_page.dart';
 part 'movie_page.dart';
+part 'sign_up_page.dart';
+part 'preference_page.dart';
+part 'account_confirmation_page.dart';
 
