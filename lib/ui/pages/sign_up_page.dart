@@ -163,51 +163,55 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 30,
                   ),
                   FloatingActionButton(
-                    child: Icon(Icons.arrow_forward),
-                    backgroundColor: mainColor,
-                    elevation: 0,
-                    onPressed: () {
-                      if (!(nameController.text.trim() != "" &&
-                          emailController.text.trim() != "" &&
-                          passwordController.text.trim() != "" &&
-                          retypePasswordController.text.trim() != "")) {
-                        Flushbar(
-                          duration: Duration(milliseconds: 1500),
-                          flushbarPosition: FlushbarPosition.TOP,
-                          backgroundColor: Color(0xFFFF5C83),
-                          message: "please fill all the fields",
-                        )..show(context);
-                      } else if (passwordController.text !=
-                          retypePasswordController.text) {
-                        Flushbar(
-                          duration: Duration(milliseconds: 1500),
-                          flushbarPosition: FlushbarPosition.TOP,
-                          backgroundColor: Color(0xFFFF5C83),
-                          message: "Mismatch password and confirmed password",
-                        )..show(context);
-                      } else if (passwordController.text.length < 6) {
-                        Flushbar(
-                          duration: Duration(milliseconds: 1500),
-                          flushbarPosition: FlushbarPosition.TOP,
-                          backgroundColor: Color(0xFFFF5C83),
-                          message: "Password's length min 6 characters",
-                        )..show(context);
-                      } else if (!EmailValidator.validate(
-                          emailController.text)) {
-                        Flushbar(
-                          duration: Duration(milliseconds: 1500),
-                          flushbarPosition: FlushbarPosition.TOP,
-                          backgroundColor: Color(0xFFFF5C83),
-                          message: "Wrong formatted email address",
-                        )..show(context);
-                      } else {
-                        widget.registrationData.name = nameController.text;
-                        widget.registrationData.email = emailController.text;
-                        widget.registrationData.password =passwordController.text;
+                      child: Icon(Icons.arrow_forward),
+                      backgroundColor: mainColor,
+                      elevation: 0,
+                      onPressed: () {
+                        if (!(nameController.text.trim() != "" &&
+                            emailController.text.trim() != "" &&
+                            passwordController.text.trim() != "" &&
+                            retypePasswordController.text.trim() != "")) {
+                          Flushbar(
+                            duration: Duration(milliseconds: 1500),
+                            flushbarPosition: FlushbarPosition.TOP,
+                            backgroundColor: Color(0xFFFF5C83),
+                            message: "please fill all the fields",
+                          )..show(context);
+                        } else if (passwordController.text !=
+                            retypePasswordController.text) {
+                          Flushbar(
+                            duration: Duration(milliseconds: 1500),
+                            flushbarPosition: FlushbarPosition.TOP,
+                            backgroundColor: Color(0xFFFF5C83),
+                            message: "Mismatch password and confirmed password",
+                          )..show(context);
+                        } else if (passwordController.text.length < 6) {
+                          Flushbar(
+                            duration: Duration(milliseconds: 1500),
+                            flushbarPosition: FlushbarPosition.TOP,
+                            backgroundColor: Color(0xFFFF5C83),
+                            message: "Password's length min 6 characters",
+                          )..show(context);
+                        } else if (!EmailValidator.validate(
+                            emailController.text)) {
+                          Flushbar(
+                            duration: Duration(milliseconds: 1500),
+                            flushbarPosition: FlushbarPosition.TOP,
+                            backgroundColor: Color(0xFFFF5C83),
+                            message: "Wrong formatted email address",
+                          )..show(context);
+                        } else {
+                          widget.registrationData.name = nameController.text;
+                          widget.registrationData.email = emailController.text;
+                          widget.registrationData.password =
+                              passwordController.text;
 
-                        //todo: go to preference page
-                      }
-                    })
+                          //todo: go to preference page
+                          context
+                              .bloc<PageBloc>()
+                              .add(GoToPreferencePage(widget.registrationData));
+                        }
+                      })
                 ],
               )
             ],
