@@ -33,7 +33,17 @@ class SelectableBox extends StatelessWidget {
             color: (!isEnabled)
                 ? Color(0xFFE4E4E4)
                 : isSelected ? accentColor2 : Colors.transparent,
-            border: Border.all( color:(!isEnabled) ?)),
+            border: Border.all(
+                color: (!isEnabled)
+                    ? Color(0xFFE4E4E4)
+                    : isSelected ? Colors.transparent : Color(0xFFE4E4E4))),
+        child: Center(
+          child: Text(
+            text ?? "None",
+            style: (textStyle ?? blackTextFont)
+                .copyWith(fontSize: 16, fontWeight: FontWeight.w400),
+          ),
+        ),
       ),
     );
   }
