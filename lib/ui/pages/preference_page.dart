@@ -1,6 +1,20 @@
 part of 'pages.dart';
 
 class PreferencePage extends StatefulWidget {
+  final List<String> genres = [
+    "Horror",
+    "Music",
+    "Action",
+    "Drama",
+    "War",
+    "Crime",
+  ];
+  final List<String> languages = [
+    "Bahasa",
+    "English",
+    "Japanese",
+    "Korean",
+  ];
   final RegistrationData registrationData;
 
   PreferencePage(this.registrationData);
@@ -10,6 +24,9 @@ class PreferencePage extends StatefulWidget {
 }
 
 class _PreferencePageState extends State<PreferencePage> {
+  List<String> selectedGenres = [];
+  String selectedLanguage = "English";
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -19,6 +36,7 @@ class _PreferencePageState extends State<PreferencePage> {
         context
             .bloc<PageBloc>()
             .add(GoToRegistrationPage(widget.registrationData));
+        return;
       },
       child: Scaffold(
         body: Container(
@@ -40,6 +58,18 @@ class _PreferencePageState extends State<PreferencePage> {
                               GoToRegistrationPage(widget.registrationData));
                         },
                         child: Icon(Icons.arrow_back)),
+                  ),
+                  Text(
+                    "Select Your Four\nFavorite Genres",
+                    style: blackTextFont.copyWith(fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Wrap(
+                    spacing: 24,
+                    runSpacing: 24,
+                    children: generateGenreWidgets(context),
                   )
                 ],
               ),
@@ -48,5 +78,35 @@ class _PreferencePageState extends State<PreferencePage> {
         ),
       ),
     );
+  }
+
+  List<Widget> generateGenreWidgets(BuildContext context) {
+    double width =
+        (MediaQuery.of(context).size.width - 2 * defaulMargin - 24) / 2;
+
+    return widget.genres
+        .map((e) => SelectableBox(
+              e,
+              width: width,
+              isSelected: selectedGenres.contains(e),
+              onTap: () {
+                onSelectGenre(e);
+              },
+            ))
+        .toList();
+  }
+
+  Void onSelectGenre(String genre) {
+    if (selectedGenres.contains(genre)) {
+      setState(() {
+        selectedGenres.remove(genre);
+      });
+    } else {
+      if (selectedGenres.length < 4) {
+        setState(() {
+          selectedGenres.add(genre);
+        });
+      }
+    }
   }
 }
