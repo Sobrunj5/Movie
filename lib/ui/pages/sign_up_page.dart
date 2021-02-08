@@ -142,6 +142,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   TextField(
                     controller: passwordController,
+                    obscureText: true,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)),
@@ -153,6 +154,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   TextField(
                     controller: retypePasswordController,
+                    obscureText: true,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)),
