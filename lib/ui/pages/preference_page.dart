@@ -158,7 +158,7 @@ class _PreferencePageState extends State<PreferencePage> {
         .toList();
   }
 
-  Void onSelectGenre(String genre) {
+  void onSelectGenre(String genre) {
     if (selectedGenres.contains(genre)) {
       setState(() {
         selectedGenres.remove(genre);

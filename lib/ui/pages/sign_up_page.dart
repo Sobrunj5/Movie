@@ -28,6 +28,7 @@ class _SignUpPageState extends State<SignUpPage> {
     context
         .bloc<ThemeBloc>()
         .add(ChangeTheme(ThemeData().copyWith(primaryColor: accentColor1)));
+
     return WillPopScope(
       onWillPop: () async {
         context.bloc<PageBloc>().add(GoToSplashPage());
@@ -116,7 +117,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 36,
                   ),
                   TextField(
                     controller: nameController,

@@ -56,10 +56,15 @@ class MoviePage extends StatelessWidget {
                         child: Text(
                           userState.user.name,
                           style: whiteTextFont.copyWith(fontSize: 18),
+                          maxLines: 1,
+                          overflow: TextOverflow.clip,
                         ),
                       ),
                       Text(
-                        NumberFormat.currency(locale: "id_ID", decimalDigits: 0, symbol: "IDR ")
+                        NumberFormat.currency(
+                                locale: "id_ID",
+                                decimalDigits: 0,
+                                symbol: "IDR ")
                             .format(userState.user.balance),
                         style: yellowNumberFont.copyWith(
                             fontSize: 14, fontWeight: FontWeight.w400),

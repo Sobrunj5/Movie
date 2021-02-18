@@ -35,7 +35,7 @@ class _SignInpageState extends State<SignInpage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(
-                      height: 40,
+                      height: 30,
                     ),
                     SizedBox(
                       height: 70,

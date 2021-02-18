@@ -4,13 +4,15 @@ class AccountConfirmationPage extends StatefulWidget {
   final RegistrationData registrationData;
 
   AccountConfirmationPage(this.registrationData);
+
   @override
   _AccountConfirmationPageState createState() =>
       _AccountConfirmationPageState();
 }
 
 class _AccountConfirmationPageState extends State<AccountConfirmationPage> {
-  bool isSingningUp = false;
+  bool isSigningUp = false;
+  
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -76,9 +78,11 @@ class _AccountConfirmationPageState extends State<AccountConfirmationPage> {
                     textAlign: TextAlign.center,
                     style: blackTextFont.copyWith(fontSize: 20),
                   ),
-                  SizedBox(height: 110),
-                  (isSingningUp)
-                      ? SpinKitFadingCircle(
+                  SizedBox(
+                    height: 110
+                    ),
+                  (isSigningUp)
+                       ? SpinKitFadingCircle(
                           color: Color(0xFF3E9D9D),
                           size: 45,
                         )
@@ -95,7 +99,7 @@ class _AccountConfirmationPageState extends State<AccountConfirmationPage> {
                               ),
                               onPressed: () async {
                                 setState(() {
-                                  isSingningUp = true;
+                                  isSigningUp = true;
                                 });
 
                                 imageFileToUpload =
@@ -107,11 +111,11 @@ class _AccountConfirmationPageState extends State<AccountConfirmationPage> {
                                         widget.registrationData.password,
                                         widget.registrationData.name,
                                         widget.registrationData.selectedGenres,
-                                        widget.registrationData.selectedLang);
+                                        widget.registrationData.selectedLang); 
 
                                 if (result.user == null) {
                                   setState(() {
-                                    isSingningUp = false;
+                                    isSigningUp = false;
                                   });
                                   Flushbar(
                                     duration: Duration(milliseconds: 1500),
