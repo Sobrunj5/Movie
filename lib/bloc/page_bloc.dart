@@ -1,11 +1,9 @@
 import 'dart:async';
 
-import 'package:bwa_flutix/bloc/blocs.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:bwa_flutix/models/models.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 
 
@@ -18,7 +16,8 @@ class PageBloc extends Bloc<PageEvent, PageState>{
 
   @override
   Stream<PageState> mapEventToState(
-    PageEvent event,) async*{
+    PageEvent event,
+    ) async*{
     if(event is GoToSplashPage){
       yield OnSplashPage();
     }
