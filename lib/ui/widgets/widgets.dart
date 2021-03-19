@@ -8,4 +8,5 @@ part 'movie_card.dart';
 part 'rating_stars.dart';
 part 'browse_botton.dart';
 part 'coming_soon_card.dart';
+part 'promo_card.dart';
 

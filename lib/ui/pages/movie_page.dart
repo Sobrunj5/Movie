@@ -135,27 +135,28 @@ class MoviePage extends StatelessWidget {
                 fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
-        BlocBuilder<UserBloc, UserState>(builder: (_, userState) {
-          if (userState is UserLoaded) {
-            return Container(
-              margin: EdgeInsets.symmetric(horizontal: defaulMargin),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(
-                    userState.user.selectedGenres.length,
-                    (index) =>
-                        BrowseButton(userState.user.selectedGenres[index])),
-              ),
-            );
-          } else {
-            return SpinKitCircle(
-              color: mainColor,
-              size: 50,
-            );
-          }
-        },
+        BlocBuilder<UserBloc, UserState>(
+          builder: (_, userState) {
+            if (userState is UserLoaded) {
+              return Container(
+                margin: EdgeInsets.symmetric(horizontal: defaulMargin),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: List.generate(
+                      userState.user.selectedGenres.length,
+                      (index) =>
+                          BrowseButton(userState.user.selectedGenres[index])),
+                ),
+              );
+            } else {
+              return SpinKitCircle(
+                color: mainColor,
+                size: 50,
+              );
+            }
+          },
         ),
-        // note: COMING SOON 
+        // note: COMING SOON
         Container(
           margin: EdgeInsets.fromLTRB(defaulMargin, 30, defaulMargin, 12),
           child: Text(
@@ -191,6 +192,24 @@ class MoviePage extends StatelessWidget {
             },
           ),
         ),
+        // note:GET LUCKY GET
+        Container(
+          margin: EdgeInsets.fromLTRB(defaulMargin, 30, defaulMargin, 12),
+          child: Text(
+            "Get Lucky Day",
+            style: blackTextFont.copyWith(
+                fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+        ),
+        Column(
+          children: dummyPromos
+              .map((e) => Padding(
+                  padding:
+                      EdgeInsets.fromLTRB(defaulMargin, 0, defaulMargin, 16),
+                  child: PromoCard(e)))
+              .toList(),
+        ),
+        SizedBox(height: 100,)
       ],
     );
   }
