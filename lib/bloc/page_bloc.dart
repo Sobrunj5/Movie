@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bwa_flutix/bloc/blocs.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:bwa_flutix/models/models.dart';
 import 'package:equatable/equatable.dart';

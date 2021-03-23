@@ -2,9 +2,9 @@ part of 'models.dart';
 
 class MovieDetail extends Movie {
   final List<String> genres;
-  final String languange;
+  final String language;
 
-  MovieDetail(Movie movie, {this.genres, this.languange})
+  MovieDetail(Movie movie, {this.genres, this.language})
       : super(
             id: movie.id,
             title: movie.title,
@@ -18,9 +18,9 @@ class MovieDetail extends Movie {
     for (var genre in genres) {
       s += genre + (genre != genres.last ? ',' : '');
     }
-    return "$s - $languange";
+    return "$s - $language";
   }
 
   @override
-  List<Object> get props => super.props + [genres, languange];
+  List<Object> get props => super.props + [genres, language];
 }

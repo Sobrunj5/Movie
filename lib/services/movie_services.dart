@@ -46,7 +46,7 @@ class MovieServices {
         break;
     }
     return MovieDetail(movie,
-        languange: language,
+        language: language,
         genres: genres
             .map((e) => (e as Map<String, dynamic>)['name'].toString())
             .toList());

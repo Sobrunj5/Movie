@@ -100,7 +100,7 @@ class MoviePage extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 160,
+          height: 140,
           child: BlocBuilder<MovieBloc, MovieState>(
             builder: (_, movieState) {
               if (movieState is MovieLoaded) {
@@ -110,13 +110,19 @@ class MoviePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: movies.length,
                     itemBuilder: (_, index) => Container(
-                          margin: EdgeInsets.only(
-                              left: (index == 0) ? defaulMargin : 0,
-                              right: (index == movies.length - 1)
-                                  ? defaulMargin
-                                  : 16),
-                          child: MovieCard(movies[index]),
-                        ));
+                        margin: EdgeInsets.only(
+                            left: (index == 0) ? defaulMargin : 0,
+                            right: (index == movies.length - 1)
+                                ? defaulMargin
+                                : 16),
+                        child: MovieCard(
+                          movies[index],
+                          onTap: () {
+                            context
+                                .bloc<PageBloc>()
+                                .add(GoToMovieDetailPage(movies[index]));
+                          },
+                        )));
               } else {
                 return SpinKitFadingCircle(
                   color: mainColor,
@@ -209,7 +215,9 @@ class MoviePage extends StatelessWidget {
                   child: PromoCard(e)))
               .toList(),
         ),
-        SizedBox(height: 100,)
+        SizedBox(
+          height: 100,
+        )
       ],
     );
   }
